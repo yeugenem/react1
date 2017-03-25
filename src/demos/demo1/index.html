@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:style="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/react.min.js"></script>
+    <script src="../../js/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <title>First Title</title>
+</head>
+<body>
+    <div id="example"></div>
+
+    <script type="text/babel">
+
+        let Man = React.createClass({
+            render: function () {
+                return (
+                    <div>
+                        <h2>Name: <b>{this.props.name}</b></h2>
+                        <p>Weight: <b>{this.props.weight}</b> kg</p>
+                    </div>
+                );
+            }
+        });
+
+
+        ReactDOM.render(
+            <div>
+                <Man name="Bob" weight="77"/>
+                <Man name="Stan" weight="98"/>
+                <Man name="John"/>
+            </div>,
+            document.getElementById('example'));
+    </script>
+</body>
+</html>
