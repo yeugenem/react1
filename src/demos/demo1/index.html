@@ -12,23 +12,28 @@
 
     <script type="text/babel">
 
-        let Man = React.createClass({
+        let Comment = React.createClass({
             render: function () {
                 return (
-                    <div>
-                        <h2>Name: <b>{this.props.name}</b></h2>
-                        <p>Weight: <b>{this.props.weight}</b> kg</p>
-                    </div>
+                        <div className="cmtContainer">
+                            <div className="cmtText">{this.props.children}</div>
+                            <button onClick={this.edit} className="btnBlue">Edit</button>
+                            <button onClick={this.remove} className="btnRed">Remove</button>
+                        </div>
                 );
+            },
+            edit: function () {
+                alert('edit');
+            },
+            remove: function () {
+                alert('rem');
             }
         });
 
 
         ReactDOM.render(
             <div>
-                <Man name="Bob" weight="77"/>
-                <Man name="Stan" weight="98"/>
-                <Man name="John"/>
+                <Comment>Hey hey</Comment>
             </div>,
             document.getElementById('example'));
     </script>
