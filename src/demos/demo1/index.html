@@ -12,28 +12,34 @@
 
     <script type="text/babel">
 
-        let Comment = React.createClass({
+        let CheckedComment = React.createClass({
+            getInitialState: function () {
+                return {chk : this.props.initChk==="true"};
+            },
+
             render: function () {
+                var styleVisible = {color:"green", fontWeight:"bold"};
+                var styleNotVisible = {color:"gray"};
+                var msg = "NO";
+                if(this.state.chk)
+                    msg = "YES";
                 return (
-                        <div className="cmtContainer">
-                            <div className="cmtText">{this.props.children}</div>
-                            <button onClick={this.edit} className="btnBlue">Edit</button>
-                            <button onClick={this.remove} className="btnRed">Remove</button>
+                        <div>
+                            <input type="checkbox" title="123" onChange={this.onChkBoxChanged} defaultChecked={this.state.chk}/>
+                            <p style={this.state.chk ? styleVisible : styleNotVisible}>{this.props.children} - isVisible: {msg}</p>
                         </div>
                 );
             },
-            edit: function () {
-                alert('edit');
-            },
-            remove: function () {
-                alert('rem');
+            onChkBoxChanged: function () {
+                this.setState({chk: !this.state.chk});
             }
+
         });
 
 
         ReactDOM.render(
             <div>
-                <Comment>Hey hey</Comment>
+                <CheckedComment initChk="false">Hey hey</CheckedComment>
             </div>,
             document.getElementById('example'));
     </script>
